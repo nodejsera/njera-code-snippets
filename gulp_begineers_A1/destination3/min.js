@@ -1,0 +1,1 @@
+function first(){return"first"}function second(){return"second"}(function(){}).call(this);
