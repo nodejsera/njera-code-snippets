@@ -48,3 +48,14 @@ gulp.task('scripts',['coffee'] , function() {
 	.pipe(uglify())
 	.pipe(gulp.dest('destination3'));
 });
+
+
+
+
+
+//  gulp.task('sass', function () {
+// return gulp.src('./sass/**/*.scss')
+//   .pipe(sass().on('error', sass.logError))
+//    .pipe(gulp.dest('./css'));
+// });
+ 
