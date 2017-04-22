@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var coffee = require('gulp-coffee');
+var ts = require('gulp-typescript');
+var sass =  require('gulp-sass');
 
 //Running via default
 /**
@@ -33,7 +35,7 @@ gulp.task('scripts' , function() {
 	.pipe(gulp.dest('destination2'));
 });
 // gulp scripts
-**/
+
 // Now running two tasks simultaneously 
 
 gulp.task('coffee' , function() {
@@ -48,14 +50,24 @@ gulp.task('scripts',['coffee'] , function() {
 	.pipe(uglify())
 	.pipe(gulp.dest('destination3'));
 });
+**/
+
+
+gulp.task('default', function () {
+    return gulp.src('source/*.ts')
+        .pipe(ts({
+            noImplicitAny: true,
+            out: 'output.js'
+        }))
+        .pipe(gulp.dest('built/local'));
+});
 
 
 
 
-
-//  gulp.task('sass', function () {
-// return gulp.src('./sass/**/*.scss')
-//   .pipe(sass().on('error', sass.logError))
-//    .pipe(gulp.dest('./css'));
-// });
+gulp.task('sass', function () {
+	return gulp.src('source/*.scss')
+	.pipe(sass().on('error', sass.logError))
+	.pipe(gulp.dest('./css'));
+});
  
